@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoarder Clearance | OnTime Waste Services Scotland</title>
+    <meta name="description" content="Compassionate hoarder clearance services across Scotland. Restore your space—call us today!">
+    <meta name="keywords" content="hoarder clearance, junk removal, house clearance, Scotland hoarder clearance, eco-friendly disposal">
+    <meta name="author" content="OnTime Waste Services Scotland">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        header { background: #003087; color: white; text-align: center; padding: 20px; }
+        .brand { margin: 0; font-size: 2em; }
+        .subtitle { font-size: 1.2em; margin: 5px 0; }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { display: inline; margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; }
+        .service-content { padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .service-content h2 { color: #003087; }
+        .cta-btn, .quote-btn { background: #003087; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 1em; margin: 10px; }
+        .cta-btn:hover, .quote-btn:hover { background: #0056b3; }
+        .contact-form { margin: 20px 0; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin: 5px 0; }
+        footer { background: #003087; color: white; text-align: center; padding: 10px; font-size: 0.9em; }
+        .footer-areas { font-size: 0.8em; margin-top: 10px; }
+        @media (max-width: 768px) { .service-content { padding: 20px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="brand">OnTime Waste Services Scotland</h1>
+        <p class="subtitle">Scotland’s Premier Junk Removal Service</p>
+        <nav>
+            <ul>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../index.html#locations">Locations</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="service-content">
+        <h2 id="dynamic-location">Hoarder Clearance in [Your Location]</h2>
+        <p id="dynamic-description">Facing a hoarding situation in [Your Location]? We provide sensitive, thorough hoarder clearance to reclaim overwhelmed spaces.</p>
+        <h3>Why Choose Us?</h3>
+        <ul>
+            <li>Discreet service</li>
+            <li>Recycling efforts</li>
+            <li>Experienced team</li>
+            <li>No judgment</li>
+        </ul>
+        <h3>Frequently Asked Questions</h3>
+        <p><strong>Is it confidential?</strong> Yes, we prioritize privacy.</p>
+        <p><strong>How long does it take?</strong> Depends on the scale—let’s chat!</p>
+        <a href="tel:07930401324"><button class="cta-btn">Call Now: 07930 401324</button></a><br>
+        <button class="quote-btn">Get an Instant Quote</button>
+        <div class="contact-form">
+            <h3>Contact Us</h3>
+            <form action="mailto:omidnoruz85@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Your Name" required><br>
+                <input type="tel" name="phone" placeholder="Your Phone" required><br>
+                <input type="email" name="email" placeholder="Your Email" required><br>
+                <input type="text" name="location" placeholder="Your Location" required><br>
+                <textarea name="message" placeholder="Tell us about your hoarder clearance needs" rows="5" required></textarea><br>
+                <input type="submit" value="Submit Inquiry" class="cta-btn">
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>© 2025 OnTime Waste Services Scotland. All rights reserved.</p>
+        <p class="footer-areas">Serving: Newton Mearns, Clarkston, Giffnock, Barrhead, Johnstone, Elderslie, Houston, Bridge of Weir, Linwood, Bishopton, Inchinnan, Livingston (Livingston Village, Deans, Howden, Knightsridge, Mid Calder, East Calder), Linlithgow, Falkirk (Denny, Grangemouth, Bonnybridge, Stenhousemuir, Larbert), Dunfermline (Dalgety Bay, Rosyth, Crossford, Cairneyhill, Townhill), Stirling, Alloa, Bathgate, Broxburn, Whitburn, Glasgow City Centre, Paisley, Renfrew, Erskine, Govan, Partick, Hillhead, Pollok, Springburn, Castlemilk, Shawlands, Dennistoun, East End, West End, Anniesland, Maryhill, Kelvinbridge, Merchant City, Govanhill, Finnieston, Pollokshields, Cardonald, Knightswood, Drumchapel, Baillieston, Easterhouse, Tollcross, Cathcart, Mosspark, Uddingston, Bellshill, Motherwell, Wishaw, Shotts, Airdrie, Coatbridge, Cumbernauld, Hamilton, East Kilbride, Rutherglen, Cambuslang, Blantyre, Larkhall, Bishopbriggs, Kirkintilloch, Bearsden, Milngavie</p>
+    </footer>
+
+    <script>
+        function updateLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        try {
+                            const response = await fetch(
+                                `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+                            );
+                            const data = await response.json();
+                            const location = data.address.town || data.address.city || data.address.village || "Your Area";
+
+                            document.getElementById("dynamic-location").textContent = 
+                                `Hoarder Clearance in ${location}`;
+                            document.getElementById("dynamic-description").textContent = 
+                                `Facing a hoarding situation in ${location}? We provide sensitive, thorough hoarder clearance to reclaim overwhelmed spaces.`;
+                        } catch (error) {
+                            console.error("Error fetching location:", error);
+                            document.getElementById("dynamic-location").textContent = 
+                                "Hoarder Clearance in Your Area";
+                        }
+                    },
+                    (error) => {
+                        console.error("Geolocation error:", error);
+                        document.getElementById("dynamic-location").textContent = 
+                            "Hoarder Clearance in Your Area";
+                    }
+                );
+            } else {
+                document.getElementById("dynamic-location").textContent = 
+                    "Hoarder Clearance in Your Area";
+            }
+        }
+
+        window.onload = updateLocation;
+    </script>
+</body>
+</html>
