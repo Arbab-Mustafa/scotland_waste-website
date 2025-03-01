@@ -1,5 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/services/:page", "destination": "/Services/:page.html" }
-  ]
+  "routes": [{ "src": "/services/(.*)", "dest": "/services/$1" }]
 }
